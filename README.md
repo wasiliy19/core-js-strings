@@ -13,7 +13,7 @@ The goal of the assignment is to learn how to work with strings in JS.
 ## Prepare and test
 
 1. Install Node.js
-2. Fork this repository: <https://github.com/rolling-scopes-school/core-js-strings>
+2. Fork this repository: <https://github.com/wasiliy19/core-js-strings>
 3. Clone your newly created repo: `https://github.com/<%your_github_username%>/core-js-strings/`
 4. Go to folder `core-js-strings`
 5. To install all dependencies use `npm install`
@@ -38,6 +38,7 @@ The goal of the assignment is to learn how to work with strings in JS.
    ```
 
    Read the task description in the comment above the function. Try to understand the idea. You can see the tests prepared if you don't understand it.
+
 7. Write your code in `src/*.js`.
 
    Remove the throwing error line from function body:
@@ -85,4 +86,4 @@ npm run lint:fix
 
 ---
 
-The task based on <https://github.com/rolling-scopes-school/js-assignments>.
+The task based on <https://github.com/wasiliy19/js-assignments>.
