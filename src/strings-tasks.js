@@ -351,10 +351,12 @@ orderAlphabetically('abc123xyz');
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
-
+containsSubstring('Hello, World!', 'World');
+containsSubstring('JavaScript is Fun', 'Python');
+containsSubstring('12345', '34');
 /**
  * Returns the number of vowels in the string.
  * Vowels: 'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'.
@@ -368,11 +370,20 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('cherry') => 2
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
+ *   countVowels('') => 0
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  if (typeof str !== 'string') {
+    throw new Error('There should be a string');
+  }
+  const vowels = str.match(/[aeiouyAEIOUY]/g);
+  return vowels ? vowels.length : 0;
 }
-
+countVowels('apple');
+countVowels('banana');
+countVowels('cherry');
+countVowels('aEiOu');
+countVowels('XYZ');
 /**
  * Returns true if the string is a palindrome; otherwise false.
  * https://en.wikipedia.org/wiki/Palindrome
@@ -385,10 +396,17 @@ function countVowels(/* str */) {
  *   isPalindrome('racecar') => true
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
+ *   isPalindrome('A man, a plan, a canal, Panama!') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const cleane = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  const reverse = cleane.split('').reverse().join('');
+  return cleane === reverse;
 }
+isPalindrome('madam');
+isPalindrome('racecar');
+isPalindrome('apple');
+isPalindrome('No lemon, no melon');
 
 /**
  * Find the longest word in the sentence. If there are multiple longest words,
