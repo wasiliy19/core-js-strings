@@ -66,10 +66,14 @@ isString('test');
  *   concatenateStrings('aa', 'bb') => 'aabb'
  *   concatenateStrings('aa', '') => 'aa'.
  *   concatenateStrings('', 'bb') => 'bb'
+ *   concatenateStrings('123', '456') => '123456'
  */
-function concatenateStrings(/* value1, value2 */) {
-  throw new Error('Not implemented');
+function concatenateStrings(value1, value2) {
+  return String.prototype.concat(value1, value2);
 }
+concatenateStrings('aa', 'bb');
+concatenateStrings('aa', '');
+concatenateStrings('', 'bb');
 
 /**
  * Returns the first character of the given string.
@@ -82,9 +86,12 @@ function concatenateStrings(/* value1, value2 */) {
  *   getFirstChar('cat') => 'c'
  *   getFirstChar('') => ''
  */
-function getFirstChar(/* value */) {
-  throw new Error('Not implemented');
+function getFirstChar(value) {
+  return value.charAt(0);
 }
+getFirstChar('John Doe');
+getFirstChar('cat');
+getFirstChar('');
 
 /**
  * Removes leading and trailing whitespace characters from the string.
@@ -97,9 +104,12 @@ function getFirstChar(/* value */) {
  *   removeLeadingAndTrailingWhitespaces('cat ') => 'cat'
  *   removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ') => 'Hello, World!'
  */
-function removeLeadingAndTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingAndTrailingWhitespaces(value) {
+  return value.trim();
 }
+removeLeadingAndTrailingWhitespaces('  Abracadabra');
+removeLeadingAndTrailingWhitespaces('cat ');
+removeLeadingAndTrailingWhitespaces('\t\t\tHello, World! ');
 
 /**
  * Removes only leading whitespace characters from the string.
@@ -112,9 +122,12 @@ function removeLeadingAndTrailingWhitespaces(/* value */) {
  *   removeLeadingWhitespaces('cat ') => 'cat '
  *   removeLeadingWhitespaces('\t\t\tHello, World! ') => 'Hello, World! '
  */
-function removeLeadingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeLeadingWhitespaces(value) {
+  return value.trimStart();
 }
+removeLeadingWhitespaces('  Abracadabra');
+removeLeadingWhitespaces('cat ');
+removeLeadingWhitespaces('\t\t\tHello, World! ');
 
 /**
  * Removes only trailing whitespace characters from the string.
@@ -127,9 +140,12 @@ function removeLeadingWhitespaces(/* value */) {
  *   removeTrailingWhitespaces('cat ') => 'cat'
  *   removeTrailingWhitespaces('\t\t\tHello, World! ') => '\t\t\tHello, World!'
  */
-function removeTrailingWhitespaces(/* value */) {
-  throw new Error('Not implemented');
+function removeTrailingWhitespaces(value) {
+  return value.trimEnd();
 }
+removeTrailingWhitespaces('  Abracadabra');
+removeTrailingWhitespaces('cat ');
+removeTrailingWhitespaces('\t\t\tHello, World! ');
 
 /**
  * Returns a string that is repeated the specified number of times.
@@ -144,9 +160,16 @@ function removeTrailingWhitespaces(/* value */) {
  *   repeatString('', 3) => ''
  *   repeatString('abc', -2) => ''
  */
-function repeatString(/* str, times */) {
-  throw new Error('Not implemented');
+function repeatString(str, times) {
+  if (typeof times !== 'number' || times < 0) {
+    return '';
+  }
+  return str.repeat(times);
 }
+repeatString('A', 5);
+repeatString('cat', 3);
+repeatString('', 3);
+repeatString('abc', -2);
 
 /**
  * Remove the first occurrence of a substring from a string.
@@ -160,10 +183,16 @@ function repeatString(/* str, times */) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const index = str.indexOf(value);
+  if (index === -1) {
+    return str;
+  }
+  return str.slice(0, index) + str.slice(index + value.length);
 }
-
+removeFirstOccurrences('To be or not to be', 'be');
+removeFirstOccurrences('I like legends', 'end');
+removeFirstOccurrences('ABABAB', 'BA');
 /**
  * Remove the last occurrence of a substring from a string.
  *
