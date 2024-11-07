@@ -417,12 +417,23 @@ isPalindrome('No lemon, no melon');
  *
  * @example:
  *   findLongestWord('The quick brown fox') => 'quick'
- *   findLongestWord('A long and winding road') => 'winding'
+ *   findLongestWord('A long and winding winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const words = sentence.split(' ');
+  let longWord = '';
+  words.every((word) => {
+    if (word.length > longWord.length) {
+      longWord = word;
+    }
+    return true;
+  });
+  return longWord;
 }
+findLongestWord('The quick brown fox');
+findLongestWord('A long and winding winding road');
+findLongestWord('No words here');
 
 /**
  * Returns the string where each word is reversed.
@@ -434,9 +445,14 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  return str
+    .split(' ')
+    .map((word) => word.split('').reverse().join(''))
+    .join(' ');
 }
+reverseWords('Hello World');
+reverseWords('The Quick Brown Fox');
 
 /**
  * Inverts the case of each character in the given string.
@@ -449,9 +465,18 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  const invert = str
+    .split('')
+    .map((cas) =>
+      cas === cas.toUpperCase() ? cas.toLowerCase() : cas.toUpperCase()
+    )
+    .join('');
+  return invert;
 }
+invertCase('Hello, World!');
+invertCase('JavaScript is Fun');
+invertCase('12345');
 
 /**
  * Returns the result of string template and given parameters firstName and lastName.
@@ -466,9 +491,11 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
+getStringFromTemplate('John', 'Doe');
+getStringFromTemplate('Chuck', 'Norris');
 
 /**
  * Extracts a name from template string 'Hello, First_Name Last_Name!'.
@@ -480,10 +507,12 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const names = value.match(/Hello,\s*(.+?)\s*!/);
+  return names ? names[1] : '';
 }
-
+extractNameFromTemplate('Hello, John Doe!');
+extractNameFromTemplate('Hello, Chuck Norris!');
 /**
  * Remove the first and last angle brackets from tag string
  *
