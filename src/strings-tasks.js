@@ -287,9 +287,23 @@ endsWith('Hello World', 'Hello');
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  if (
+    minutes < 0 ||
+    seconds < 0 ||
+    !Number.isInteger(minutes) ||
+    !Number.isInteger(seconds)
+  ) {
+    throw new Error('Еhe data is not correct');
+  }
+  const min = String(minutes).padStart(2, 0);
+  const sec = String(seconds).padStart(2, 0);
+  return `${min}:${sec}`;
 }
+formatTime(5, 30);
+formatTime(1, 15);
+formatTime(0, 45);
+formatTime(0, 0);
 
 /**
  * Returns a string in reverse order.
@@ -301,9 +315,11 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
+reverseString('abcdef');
+reverseString('12345');
 
 /**
  * Returns a string with characters in alphabetical order.
@@ -316,9 +332,12 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
 }
+orderAlphabetically('webmaster');
+orderAlphabetically('textbook');
+orderAlphabetically('abc123xyz');
 
 /**
  * Checks if a given string contains a specified substring.
